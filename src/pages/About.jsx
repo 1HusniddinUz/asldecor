@@ -1,4 +1,6 @@
 import "../assets/styles/About.css";
+import { NavLink } from "react-router-dom";
+
 import sandiq from "../assets/images/5.png"
 import qorayon from "../assets/images/qora--yon.jpg"
 import oqyon from "../assets/images/oq-yon.jpg"
@@ -74,18 +76,14 @@ export default function About() {
               <NavLink
                 to="/contact"
                 end
-                className={({ isActive }) =>
-                  isActive ? "navLink active" : "navLink"
-                }
+                className="btnPrimary"
               >
                 Contact
               </NavLink>
               <NavLink
                 to="/products"
                 end
-                className={({ isActive }) =>
-                  isActive ? "navLink active" : "navLink"
-                }
+                className="btnGhost"
               >
                 Products
               </NavLink>

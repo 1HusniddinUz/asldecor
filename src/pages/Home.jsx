@@ -1,4 +1,4 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 import "../assets/styles/Home.css";
 import qorayon from "../assets/images/qora--yon.jpg";
 import eshik from "../assets/images/oq2.png";
@@ -48,22 +48,10 @@ export default function Home() {
             </p>
 
             <div className="heroActions">
-              <NavLink
-                to="/contact"
-                end
-                className={({ isActive }) =>
-                  isActive ? "navLink active" : "navLink"
-                }
-              >
+              <NavLink to="/contact" end className="btnPrimary">
                 Contact
               </NavLink>
-              <NavLink
-                to="/products"
-                end
-                className={({ isActive }) =>
-                  isActive ? "navLink active" : "navLink"
-                }
-              >
+              <NavLink to="/products" end className="btnGhost">
                 Products
               </NavLink>
             </div>
@@ -211,23 +199,11 @@ export default function Home() {
               </p>
             </div>
             <div className="ctaBtns">
-              <NavLink
-                to="/contact"
-                end
-                className={({ isActive }) =>
-                  isActive ? "navLink active" : "navLink"
-                }
-              >
+              <NavLink to="/contact" end className="btnPrimary">
                 Contact
               </NavLink>
-              <NavLink
-                to="/marketplaces"
-                end
-                className={({ isActive }) =>
-                  isActive ? "navLink active" : "navLink"
-                }
-              >
-                Marketplaces
+              <NavLink to="/products" end className="btnGhost">
+                Products
               </NavLink>
             </div>
           </div>
