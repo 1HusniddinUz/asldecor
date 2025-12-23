@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+/* GLOBAL RESET — white border / overflow muammolarini yo'q qiladi */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0; /* <-- shu oq chetning 90% sababi */
+  padding: 0;
+  overflow-x: hidden; /* <-- 100vw overflow bo'lsa ham yashiradi */
+  background: #2b2e28; /* sizning dark theme foningiz */
+}
+
+#root {
+  min-height: 100%;
+  background: #2b2e28;
+}

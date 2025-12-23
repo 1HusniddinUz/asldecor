@@ -1,0 +1,168 @@
+:root{
+  --nav-w: 300px;
+  --bg: #2f322d;
+  --bg-2: rgba(255,255,255,0.06);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.62);
+  --muted-2: rgba(255,255,255,0.38);
+  --line: rgba(255,255,255,0.10);
+}
+
+.sideNav{
+  position: fixed;
+  inset: 0 auto 0 0;           /* top:0; left:0; bottom:0 */
+  width: var(--nav-w);
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  padding: 56px 44px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 50;
+}
+
+.sideNav .container{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.logo_box h1{
+  margin: 0;
+  font-size: 40px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.nav_links ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.nav_links li{
+  margin: 0;
+}
+
+.navLink{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 0;
+  transition: 160ms ease;
+  position: relative;
+}
+
+.navLink:hover{
+  color: var(--text);
+  transform: translateX(2px);
+}
+
+.navLink.active{
+  color: var(--text);
+}
+
+.navLink.active::before{
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+}
+
+.lang_provider{
+  margin-top: 10px;
+}
+
+.lang_provider select{
+  width: 92px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  outline: none;
+  padding: 0 10px;
+  appearance: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.lang_provider select:hover{
+  border-color: rgba(255,255,255,0.18);
+}
+.lang_provider select:hover option{
+  background: var(--bg);
+}
+.social_links{
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.socialBtn{
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+  transition: 160ms ease;
+}
+
+.socialBtn:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.socialBtn svg{
+  font-size: 16px;
+  opacity: 0.92;
+}
+
+/* Responsive: mobilda sidebarni yuqoriga chiqarib, ixchamlashtiramiz */
+@media (max-width: 900px){
+  :root{ --nav-w: 100%; }
+
+  .sideNav{
+    position: sticky;
+    width: 100%;
+    height: auto;
+    padding: 18px 18px 14px;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo_box h1{
+    font-size: 26px;
+  }
+
+  .nav_links ul{
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 6px;
+  }
+
+  .navLink.active::before{
+    display: none;
+  }
+}

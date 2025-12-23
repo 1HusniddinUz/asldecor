@@ -1,0 +1,225 @@
+:root{
+  --bg: #2f322d;
+  --line: rgba(255,255,255,0.12);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.62);
+  --muted2: rgba(255,255,255,0.42);
+
+  --gold: #b88a46;
+  --goldSoft: rgba(184,138,70,0.18);
+
+  --radius: 0px; /* rectangular */
+}
+
+/* Page */
+.marketplaces-page{
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 44px 48px;
+}
+
+.marketplaces-container{
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-right: 0;
+}
+
+/* Header */
+.marketplaces-header{
+  padding: 8px 0 18px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 18px;
+}
+
+.marketplaces-eyebrow{
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.marketplaces-title{
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.08;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.marketplaces-title span{
+  color: var(--gold);
+}
+
+.marketplaces-subtitle{
+  margin: 12px 0 0;
+  max-width: 820px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Block header */
+.marketplaces-block{
+  padding-top: 8px;
+}
+
+.marketplaces-block-header{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.marketplaces-block-title{
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.marketplaces-block-text{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+/* IMPORTANT: 2 columns always (desktop + mobile) */
+.marketplaces-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Card */
+.marketplace-card{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: radial-gradient(900px 380px at 15% 0%, var(--goldSoft), rgba(0,0,0,0.14));
+  padding: 16px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 160ms ease;
+}
+
+.marketplace-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(184,138,70,0.42);
+}
+
+/* Top */
+.marketplace-card-top{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.marketplace-logo{
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(0,0,0,0.16);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.marketplace-logo img{
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+  opacity: 0.92;
+}
+
+.marketplace-name{
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.marketplace-type{
+  margin: 6px 0 0;
+  color: var(--muted2);
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+/* Focus */
+.marketplace-focus{
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* Footer */
+.marketplace-footer{
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.marketplace-link{
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid rgba(184,138,70,0.38);
+  background: rgba(184,138,70,0.16);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: 160ms ease;
+}
+
+.marketplace-link:hover{
+  transform: translateY(-1px);
+  border-color: rgba(184,138,70,0.56);
+}
+
+.marketplace-arrow{
+  color: rgba(255,255,255,0.78);
+  font-size: 16px;
+}
+
+/* Note */
+.marketplaces-note{
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.marketplaces-note p{
+  margin: 0;
+  color: var(--muted2);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 680px){
+  .marketplaces-page{ padding: 28px 22px; }
+  .marketplaces-title{ font-size: 28px; }
+  .marketplace-card{ padding: 14px; min-height: 140px; }
+  .marketplace-logo{ width: 42px; height: 42px; }
+  .marketplace-focus{ font-size: 13px; }
+}
