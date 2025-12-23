@@ -71,8 +71,24 @@ export default function About() {
             </div>
 
             <div className="luxCtaRight">
-              <a className="luxBtn" href="/contact">Contact</a>
-              <a className="luxBtn luxBtnGhost" href="/products">Products</a>
+              <NavLink
+                to="/contact"
+                end
+                className={({ isActive }) =>
+                  isActive ? "navLink active" : "navLink"
+                }
+              >
+                Contact
+              </NavLink>
+              <NavLink
+                to="/products"
+                end
+                className={({ isActive }) =>
+                  isActive ? "navLink active" : "navLink"
+                }
+              >
+                Products
+              </NavLink>
             </div>
           </div>
         </section>

@@ -1,15 +1,30 @@
 import React from "react";
 import "../assets/styles/Home.css";
-import qorayon from "../assets/images/qora--yon.jpg"
-import eshik from "../assets/images/oq2.png"
-import sandiq from "../assets/images/4.png"
-import korabka from "../assets/images/oq-opp.jpg"
-import naqsh from "../assets/images/naqsh.jpg"
+import qorayon from "../assets/images/qora--yon.jpg";
+import eshik from "../assets/images/oq2.png";
+import sandiq from "../assets/images/4.png";
+import korabka from "../assets/images/oq-opp.jpg";
+import naqsh from "../assets/images/naqsh.jpg";
 const FEATURED = [
-  { id: 1, title: "CNC Decor Panel", subtitle: "Clean edges • Sharp finish", img: eshik },
-  { id: 2, title: "Acrylic Sign", subtitle: "Minimal • Premium look", img: naqsh },
+  {
+    id: 1,
+    title: "CNC Decor Panel",
+    subtitle: "Clean edges • Sharp finish",
+    img: eshik,
+  },
+  {
+    id: 2,
+    title: "Acrylic Sign",
+    subtitle: "Minimal • Premium look",
+    img: naqsh,
+  },
   { id: 3, title: "Wall Logo", subtitle: "Balance • Geometry", img: korabka },
-  { id: 4, title: "Detail Close-up", subtitle: "Texture • Precision", img: sandiq },
+  {
+    id: 4,
+    title: "Detail Close-up",
+    subtitle: "Texture • Precision",
+    img: sandiq,
+  },
 ];
 
 export default function Home() {
@@ -28,12 +43,29 @@ export default function Home() {
             </h1>
 
             <p className="heroSub">
-              Buyurtma jarayoni sodda: o‘lcham + material + namuna. Qolganini biz “clean” qilib beramiz.
+              Buyurtma jarayoni sodda: o‘lcham + material + namuna. Qolganini
+              biz “clean” qilib beramiz.
             </p>
 
             <div className="heroActions">
-              <a className="btnPrimary" href="/contact">Contact</a>
-              <a className="btnGhost" href="/products">Products</a>
+              <NavLink
+                to="/contact"
+                end
+                className={({ isActive }) =>
+                  isActive ? "navLink active" : "navLink"
+                }
+              >
+                Contact
+              </NavLink>
+              <NavLink
+                to="/products"
+                end
+                className={({ isActive }) =>
+                  isActive ? "navLink active" : "navLink"
+                }
+              >
+                Products
+              </NavLink>
             </div>
 
             <div className="heroChips" aria-label="Quick highlights">
@@ -68,12 +100,19 @@ export default function Home() {
         <section className="homeSection" aria-label="Featured works">
           <div className="sectionHead">
             <h2 className="sectionTitle">Featured</h2>
-            <p className="sectionText">4 ta ish — showroom “vibe” uchun yetarli. Ortiqcha shovqin yo‘q.</p>
+            <p className="sectionText">
+              4 ta ish — showroom “vibe” uchun yetarli. Ortiqcha shovqin yo‘q.
+            </p>
           </div>
 
           <div className="featuredGrid">
             {FEATURED.map((item) => (
-              <article className="tile" key={item.id} tabIndex={0} aria-label={item.title}>
+              <article
+                className="tile"
+                key={item.id}
+                tabIndex={0}
+                aria-label={item.title}
+              >
                 <img
                   src={item.img}
                   alt={item.title}
@@ -97,26 +136,34 @@ export default function Home() {
         <section className="homeSection" aria-label="Services">
           <div className="sectionHead">
             <h2 className="sectionTitle">Services</h2>
-            <p className="sectionText">3 ta asosiy yo‘nalish — aniq, qisqa, premium.</p>
+            <p className="sectionText">
+              3 ta asosiy yo‘nalish — aniq, qisqa, premium.
+            </p>
           </div>
 
           <div className="servicesRow">
             <div className="serviceCard">
               <p className="serviceTop">01</p>
               <p className="serviceTitle">Rover kesish</p>
-              <p className="serviceText">Toza qirra, aniq kesim, stabil natija.</p>
+              <p className="serviceText">
+                Toza qirra, aniq kesim, stabil natija.
+              </p>
             </div>
 
             <div className="serviceCard">
               <p className="serviceTop">02</p>
               <p className="serviceTitle">Gravirovka</p>
-              <p className="serviceText">Logo, yozuv, pattern — minimal, lekin kuchli.</p>
+              <p className="serviceText">
+                Logo, yozuv, pattern — minimal, lekin kuchli.
+              </p>
             </div>
 
             <div className="serviceCard">
               <p className="serviceTop">03</p>
               <p className="serviceTitle">Maket & ishlov</p>
-              <p className="serviceText">Fayl tayyorlash + yakuniy finish (lux look).</p>
+              <p className="serviceText">
+                Fayl tayyorlash + yakuniy finish (lux look).
+              </p>
             </div>
           </div>
         </section>
@@ -125,7 +172,9 @@ export default function Home() {
         <section className="homeSection" aria-label="Process steps">
           <div className="sectionHead">
             <h2 className="sectionTitle">Process</h2>
-            <p className="sectionText">4 qadam — boshqasi unnecessary drama 😄</p>
+            <p className="sectionText">
+              4 qadam — boshqasi unnecessary drama 😄
+            </p>
           </div>
 
           <div className="stepsRow">
@@ -157,11 +206,29 @@ export default function Home() {
           <div className="ctaBar">
             <div>
               <p className="ctaMini">READY</p>
-              <p className="ctaLine">Buyurtma tayyormi? 1 ta xabar — va biz boshlaymiz.</p>
+              <p className="ctaLine">
+                Buyurtma tayyormi? 1 ta xabar — va biz boshlaymiz.
+              </p>
             </div>
             <div className="ctaBtns">
-              <a className="btnPrimary" href="/contact">Contact</a>
-              <a className="btnGhost" href="/marketplaces">Marketplaces</a>
+              <NavLink
+                to="/contact"
+                end
+                className={({ isActive }) =>
+                  isActive ? "navLink active" : "navLink"
+                }
+              >
+                Contact
+              </NavLink>
+              <NavLink
+                to="/marketplaces"
+                end
+                className={({ isActive }) =>
+                  isActive ? "navLink active" : "navLink"
+                }
+              >
+                Marketplaces
+              </NavLink>
             </div>
           </div>
         </section>
