@@ -8,9 +8,10 @@
   --line: rgba(255,255,255,0.10);
 }
 
+/* DESKTOP: left fixed sidebar */
 .sideNav{
   position: fixed;
-  inset: 0 auto 0 0;           /* top:0; left:0; bottom:0 */
+  inset: 0 auto 0 0;
   width: var(--nav-w);
   height: 100vh;
   background: var(--bg);
@@ -28,6 +29,17 @@
   gap: 40px;
 }
 
+.navHeaderRow{
+  display: block;
+}
+
+.navHeaderRight{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Logo */
 .logo_box h1{
   margin: 0;
   font-size: 40px;
@@ -37,6 +49,7 @@
   line-height: 1;
 }
 
+/* Links */
 .nav_links ul{
   list-style: none;
   padding: 0;
@@ -45,9 +58,7 @@
   gap: 14px;
 }
 
-.nav_links li{
-  margin: 0;
-}
+.nav_links li{ margin: 0; }
 
 .navLink{
   display: inline-flex;
@@ -72,18 +83,20 @@
   color: var(--text);
 }
 
+/* Rectangular active marker (no circle) */
 .navLink.active::before{
   content: "";
   position: absolute;
   left: -16px;
   top: 50%;
   transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
+  width: 2px;
+  height: 14px;
+  border-radius: 0;
   background: rgba(255,255,255,0.9);
 }
 
+/* Language */
 .lang_provider{
   margin-top: 10px;
 }
@@ -91,7 +104,7 @@
 .lang_provider select{
   width: 92px;
   height: 34px;
-  border-radius: 10px;
+  border-radius: 0;
   background: var(--bg-2);
   border: 1px solid var(--line);
   color: var(--text);
@@ -108,6 +121,8 @@
 .lang_provider select:hover option{
   background: var(--bg);
 }
+
+/* Social */
 .social_links{
   display: flex;
   gap: 14px;
@@ -119,7 +134,7 @@
   height: 34px;
   display: grid;
   place-items: center;
-  border-radius: 999px;
+  border-radius: 0; /* rectangular */
   background: var(--bg-2);
   border: 1px solid var(--line);
   color: var(--text);
@@ -137,32 +152,136 @@
   opacity: 0.92;
 }
 
-/* Responsive: mobilda sidebarni yuqoriga chiqarib, ixchamlashtiramiz */
+/* Mobile menu button (hidden on desktop) */
+.menuBtn{
+  display: none;
+  width: 40px;
+  height: 34px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  border-radius: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menuIcon{
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: rgba(255,255,255,0.86);
+  margin: 0 auto;
+  position: relative;
+}
+.menuIcon::before,
+.menuIcon::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: rgba(255,255,255,0.86);
+}
+.menuIcon::before{ top: -6px; }
+.menuIcon::after{ top: 6px; }
+
+/* =========================
+   RESPONSIVE (<= 900px)
+   sidebar -> topbar + collapsible menu
+========================= */
 @media (max-width: 900px){
   :root{ --nav-w: 100%; }
 
   .sideNav{
     position: sticky;
+    top: 0;
     width: 100%;
     height: auto;
-    padding: 18px 18px 14px;
-    border-right: none;
+    padding: 14px 16px;
     border-bottom: 1px solid var(--line);
   }
 
+  .sideNav .container{
+    gap: 12px;
+  }
+
+  .navHeaderRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
   .logo_box h1{
-    font-size: 26px;
+    font-size: 24px;
+  }
+
+  .menuBtn{
+    display: inline-grid;
+    place-items: center;
+  }
+
+  /* Links collapse */
+  .nav_links{
+    border-top: 1px solid rgba(255,255,255,0.10);
+    padding-top: 10px;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: 220ms ease;
+  }
+
+  .sideNav.isOpen .nav_links{
+    max-height: 320px;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .nav_links ul{
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
-    overflow-x: auto;
-    gap: 16px;
-    padding-bottom: 6px;
+    display: grid;
+    gap: 10px;
+    padding: 10px 0 2px;
+  }
+
+  .navLink{
+    width: 100%;
+    padding: 10px 0;
   }
 
   .navLink.active::before{
-    display: none;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    top: auto;
+    bottom: 0;
+    transform: none;
+    background: rgba(184,138,70,0.55);
   }
+
+  /* Social: faqat menu ochilganda ko‘rinsin (showroom clean) */
+  .social_links{
+    display: none;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+
+  .sideNav.isOpen .social_links{
+    display: flex;
+  }
+
+  .lang_provider{
+    margin-top: 0;
+  }
+
+  .lang_provider select{
+    width: 76px;
+    height: 34px;
+  }
+}
+
+/* Optional: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .navLink, .socialBtn, .nav_links{ transition: none; }
 }

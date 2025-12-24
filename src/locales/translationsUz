@@ -1,0 +1,217 @@
+// src/i18n/translationsUz.js
+const translationsUz = {
+  // =====================
+  // Navbar
+  // =====================
+  home: "Bosh sahifa",
+  products: "Mahsulotlar",
+  marketplaces: "Marketpleyslar",
+  about: "Biz haqimizda",
+  contact: "Kontaktlar",
+
+  // =====================
+  // About page (from About.jsx only)
+  // =====================
+  about_aria_label: "About AslDecor",
+  about_eyebrow: "ABOUT / ASL DECOR",
+  about_title: "Hashamatli ko'rinish beruvchi",
+  about_title_span: " naqshli panellar ",
+
+  about_collage_aria: "Visual collage",
+  about_more_visuals_aria: "More visuals",
+
+  about_img_alt_hero: "AslDecor hero work",
+  about_img_alt_detail: "Detail shot",
+  about_img_alt_texture: "Material texture",
+
+  about_cap_sandiq: "Turli ko'rinishdagi sandiqlar",
+  about_cap_dekor_1: "Noodatiy dekor panellar",
+  about_cap_dekor_2: "Noodatiy dekor panellar",
+  about_cap_process: "Ish jarayoni",
+
+  about_cap_patalok: "Patalok uchun panellar",
+  about_cap_decorative_1: "Decorative panellar",
+  about_cap_decorative_2: "Decorative panellar",
+  about_cap_material_panel: "Turli xil materialdagi panel",
+
+  // =====================
+  // Home (from Home.jsx only)
+  // =====================
+  home_aria_page: "AslDecor home page",
+  home_aria_featured: "Featured works",
+  home_aria_services: "Services",
+  home_aria_process: "Process steps",
+  home_aria_cta: "Call to action",
+
+  home_stamp_top: "ASL DECOR",
+  home_stamp_mid: "ROVER XIZMATI",
+
+  home_featured_title: "ROVER VA DURADGORLIK",
+
+  home_featured_1_title: "CLASSIC 23 VIRGIN",
+  home_featured_1_subtitle:
+    "Har bir qanotda vertikal dekorativ shisha panel bor — ichida ornamental naqsh (vitraj/bezatilgan shisha) uslubida",
+
+  home_featured_2_title: "MDF FANERA",
+  home_featured_2_subtitle:
+    "Tropik barglar (monstera/palma) motivi, uch bo‘limli kompozitsiya — zamonaviy, organik va dinamik ko‘rinadi",
+
+  home_featured_3_title: "Dekor panel",
+  home_featured_3_subtitle:
+    "Klassik / neoklassik — interyerga “qimmat” va tartibli atmosfera beradi",
+
+  home_featured_4_title: "PATINA NAFIS",
+  home_featured_4_subtitle:
+    "Yog'och nozik gulli naqshlar bilan o'yilgan va oltin rangli oyoqlarga ega. Ko'rpa to'shak va boshqa narsalarni saqlash uchun qulay.",
+
+  home_services_title: "Services",
+  home_services_subtitle: "3 ta asosiy yo‘nalish — aniq, qisqa, premium.",
+
+  home_service_1_title: "Rover kesish",
+  home_service_1_text: "Toza qirra, aniq kesim, stabil natija.",
+
+  home_service_2_title: "Gravirovka",
+  home_service_2_text: "Logo, yozuv, pattern — minimal, lekin kuchli.",
+
+  home_service_3_title: "Maket & ishlov",
+  home_service_3_text: "Fayl tayyorlash + yakuniy finish (lux look).",
+
+  home_process_title: "Ish jarayoni",
+
+  home_step_1_title: "Qisqacha ma'lumot",
+  home_step_1_text: "O‘lcham + material + namuna",
+
+  home_step_2_title: "Joylashtirish",
+  home_step_2_text: "Maket tekshiruvi",
+
+  home_step_3_title: "Kesish",
+  home_step_3_text: "Rover / CNC kesish",
+
+  home_step_4_title: "Finish",
+  home_step_4_text: "Yakuniy ishlov & topshirish",
+
+  home_cta_mini: "Buyurtmalar ",
+  home_cta_line: "Buyurtma tayyormi? 1 ta xabar — va biz boshlaymiz.",
+
+  home_cta_btn_contact: "Contact",
+  home_cta_btn_products: "Products",
+
+  // =====================
+  // Marketplaces (from Marketplaces.jsx only)
+  // =====================
+  mkt_page_aria: "Marketplaces page",
+  mkt_eyebrow: "MARKETPLACES / ASL DECOR ",
+  mkt_title: "B2C marketplace’lar",
+  mkt_subtitle:
+    "Quyidagi platformalarda mahsulotlarimizni ko‘rishingiz va buyurtma berishingiz mumkin.",
+
+  mkt_b2c_aria: "B2C platforms",
+  mkt_b2c_title: "B2C platformalar",
+  mkt_b2c_text:
+    "Har bir marketplace — alohida auditoriya va alohida “traffic” manbai. Sizga qulayini tanlang.",
+
+  mkt_btn_view: "View",
+
+  mkt_note_aria: "Note",
+  mkt_note_text:
+    "Eslatma: Platformalardagi narx va mavjudlik marketplace siyosatiga qarab o‘zgarishi mumkin.",
+
+  mkt_uzum_name: "Uzum Market",
+  mkt_uzum_type: "Marketplace storefront",
+  mkt_uzum_focus: "Mahsulotlar, aksiya va tezkor buyurtmalar",
+  mkt_uzum_logo_alt: "Uzum Market logo",
+
+  mkt_wb_name: "Wildberries",
+  mkt_wb_type: "Catalog & orders",
+  mkt_wb_focus: "Keng auditoriya, katalog orqali savdo",
+  mkt_wb_logo_alt: "Wildberries logo",
+
+  mkt_ozon_name: "Ozon",
+  mkt_ozon_type: "Product listing",
+  mkt_ozon_focus: "Tovar sahifalari va trafik orqali buyurtma",
+  mkt_ozon_logo_alt: "Ozon logo",
+
+  mkt_yandex_name: "Yandex Market",
+  mkt_yandex_type: "Search-driven demand",
+  mkt_yandex_focus: "Qidiruvdan keladigan talab va konversiya",
+  mkt_yandex_logo_alt: "Yandex Market logo",
+
+  // =====================
+  // Contact (from Contact.jsx only)
+  // =====================
+  contact_aria_page: "Contact AslDecor",
+  contact_eyebrow: "CONTACT / ASL DECOR ",
+  contact_title: "Buyurtmani aniq qilamiz.",
+  contact_title_span: "Tez va sifatli.",
+  contact_sub:
+    "O‘lcham, material va namuna (rasm) yuboring — biz sizga qisqa muddatda narx va tayyorlash muddatini aytamiz.",
+
+  contact_aria_details: "Contact details",
+  contact_label_phone: "Phone",
+  contact_label_email: "Email",
+  contact_label_location: "Location",
+
+  contact_social_title: "Social",
+  contact_aria_instagram: "Instagram",
+  contact_aria_telegram: "Telegram",
+  contact_social_hint:
+    "Tezkor aloqa uchun Telegram ideal: skrin, o‘lcham, namuna — hammasi bir joyda.",
+
+  contact_note_title: "Tip",
+  contact_note_prefix: "Eng tez hisob-kitob:",
+  contact_note_size: "o‘lcham",
+  contact_note_material: "material",
+  contact_note_image: "rasm",
+  contact_note_suffix: "Shunda aniq narx va muddatni beramiz.",
+
+  contact_aria_form: "Send a message",
+  contact_form_eyebrow: "REQUEST",
+  contact_form_title: "Project details",
+
+  contact_field_name: "Ism",
+  contact_field_phone: "Telefon",
+  contact_field_service: "Xizmat",
+  contact_field_message: "Xabar",
+
+  contact_ph_name: "Ismingiz",
+  contact_ph_phone: "+998 ...",
+  contact_ph_message: "O‘lcham, material, nechta dona, muddat...",
+
+  contact_service_rover: "Rover kesish",
+  contact_service_grav: "Gravirovka",
+  contact_service_design: "Dizayn & maket",
+  contact_service_finish: "Yakuniy ishlov",
+
+  contact_btn_send: "Send",
+  contact_btn_telegram: "Telegram",
+
+  contact_form_foot:
+    "“Send” bosilsa: Telegram username to‘g‘ri bo‘lsa — Telegramga message bilan ochadi, bo‘lmasa email.",
+
+  contact_aria_map: "Location map",
+  contact_map_title: "AslDecor location",
+
+  // Telegram message template labels (from buildTelegramLink only)
+  contact_tg_greeting: "Salom, {{brand}}!",
+  contact_tg_name: "Ism",
+  contact_tg_phone: "Telefon",
+  contact_tg_service: "Xizmat",
+  contact_tg_message: "Xabar",
+
+  // =====================
+  // Products (from Products.jsx only)
+  // =====================
+  products_aria_grid: "AslDecor products grid",
+
+  products_item_1: "PATINA NAFIS | 190 000 so'm * kv ",
+  products_item_2: "SANDIQ BROWN | 190 000 so'm * kv",
+  products_item_3: "MARAKANSKIY | 190 000 so'm * kv",
+  products_item_4: "DECOR PANEL | 450 000 - 1 200 000 so'm * kv",
+  products_item_5: "MDF FANERA | 100 000 - 450 000 so'm * kv",
+  products_item_6: "DECOR PANEL | 450 000 - 1 200 000 so'm * kv",
+  products_item_7: "CLASSIC 23 VIRGIN | 1 600 000 so'm * kv",
+  products_item_8: "PORTA 35 VERALINGA | 1 600 000 so'm * kv",
+  products_item_9: "PORTA 27 VERALINGA | 1 600 000 so'm * kv",
+};
+
+export default translationsUz;

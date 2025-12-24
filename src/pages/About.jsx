@@ -1,5 +1,5 @@
 import "../assets/styles/About.css";
-import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import sandiq from "../assets/images/5.png";
 import qorayon from "../assets/images/qora--yon.jpg";
@@ -9,51 +9,56 @@ import patalok from "../assets/videos/patalok.mp4";
 import naqsh from "../assets/videos/naqsh.mp4";
 import rover from "../assets/videos/rover.mp4";
 import temir from "../assets/videos/temir.mp4";
+
 export default function About() {
+  const { t } = useTranslation();
+
   return (
     <div className="aboutLux">
-      <section className="aboutLuxWrap" aria-label="About AslDecor">
+      <section className="aboutLuxWrap" aria-label={t("about_aria_label")}>
         {/* Minimal Header */}
         <header className="aboutLuxHead">
-          <p className="luxEyebrow">ABOUT / ASL DECOR</p>
+          <p className="luxEyebrow">{t("about_eyebrow")}</p>
+
           <h1 className="luxTitle">
-            Precision craft. <span>Luxury finish.</span>
+            {t("about_title")}
+            <span>{t("about_title_span")}</span>
           </h1>
         </header>
 
         {/* Collage 1 (Big + smalls) */}
-        <section className="luxCollage" aria-label="Visual collage">
+        <section className="luxCollage" aria-label={t("about_collage_aria")}>
           <figure className="luxTile luxBig">
-            <img src={sandiq} alt="AslDecor hero work" loading="lazy" />
-            <figcaption className="luxCap">Signature work</figcaption>
+            <img src={sandiq} alt={t("about_img_alt_hero")} loading="lazy" />
+            <figcaption className="luxCap">{t("about_cap_sandiq")}</figcaption>
           </figure>
 
           <figure className="luxTile luxSmallTop">
-            <img src={qorayon} alt="Detail shot" loading="lazy" />
-            <figcaption className="luxCap">Detail</figcaption>
+            <img src={qorayon} alt={t("about_img_alt_detail")} loading="lazy" />
+            <figcaption className="luxCap">{t("about_cap_dekor_1")}</figcaption>
           </figure>
 
           <figure className="luxTile luxSmallBottom">
-            <img src={oqyon} alt="Material texture" loading="lazy" />
-            <figcaption className="luxCap">Texture</figcaption>
+            <img src={oqyon} alt={t("about_img_alt_texture")} loading="lazy" />
+            <figcaption className="luxCap">{t("about_cap_dekor_2")}</figcaption>
           </figure>
 
           <figure className="luxTile luxWide">
             <video
               className="luxMedia"
-              src={rover} // bu yerga qaysi videoni qo'ymoqchi bo'lsangiz, o'shani bering
+              src={rover}
               autoPlay
               muted
               loop
               playsInline
               preload="metadata"
             />
-            <figcaption className="luxCap">Process</figcaption>
+            <figcaption className="luxCap">{t("about_cap_process")}</figcaption>
           </figure>
         </section>
 
         {/* Collage 2 (Elegant grid) */}
-        <section className="luxGrid2" aria-label="More visuals">
+        <section className="luxGrid2" aria-label={t("about_more_visuals_aria")}>
           <figure className="luxTile luxTall">
             <video
               className="luxMedia"
@@ -64,7 +69,7 @@ export default function About() {
               playsInline
               preload="metadata"
             />
-            <figcaption className="luxCap">Clean edges</figcaption>
+            <figcaption className="luxCap">{t("about_cap_patalok")}</figcaption>
           </figure>
 
           <figure className="luxTile">
@@ -77,7 +82,7 @@ export default function About() {
               playsInline
               preload="metadata"
             />
-            <figcaption className="luxCap">Geometry</figcaption>
+            <figcaption className="luxCap">{t("about_cap_decorative_1")}</figcaption>
           </figure>
 
           <figure className="luxTile">
@@ -90,7 +95,7 @@ export default function About() {
               playsInline
               preload="metadata"
             />
-            <figcaption className="luxCap">Balance</figcaption>
+            <figcaption className="luxCap">{t("about_cap_decorative_2")}</figcaption>
           </figure>
 
           <figure className="luxTile">
@@ -103,29 +108,8 @@ export default function About() {
               playsInline
               preload="metadata"
             />
-            <figcaption className="luxCap">Material</figcaption>
+            <figcaption className="luxCap">{t("about_cap_material_panel")}</figcaption>
           </figure>
-        </section>
-
-        {/* Minimal CTA */}
-        <section className="luxCta" aria-label="Call to action">
-          <div className="luxCtaCard">
-            <div className="luxCtaLeft">
-              <p className="luxCtaMini">Ready when You are</p>
-              <p className="luxCtaLine">
-                One message — and we align size, material, and finish.
-              </p>
-            </div>
-
-            <div className="luxCtaRight">
-              <NavLink to="/contact" end className="btnPrimary">
-                Contact
-              </NavLink>
-              <NavLink to="/products" end className="btnGhost">
-                Products
-              </NavLink>
-            </div>
-          </div>
         </section>
       </section>
     </div>

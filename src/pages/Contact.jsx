@@ -6,27 +6,45 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import "../assets/styles/Contact.css";
 
 export default function Contact() {
+  const { t } = useTranslation();
+
   // Shu joylarni keyin real ma'lumotga almashtirasiz
   const CONTACT = useMemo(
     () => ({
       brand: "ASL DECOR",
       phone: "+998 91 418 18 84",
       email: "thjobir@gmail.com",
-      telegramUsername: "https://t.me/AslDecor", // faqat username: t.me/your_username
+      telegramUsername: "https://t.me/AslDecor", // username yoki to'liq link bo'lishi mumkin
       instagram: "https://instagram.com/asldecor_patalok",
-      locationText: "Bukhara , Vobkent region Charimgaron MFY Galaba street 199",
-      mapLink: "https://maps.google.com/maps?q=40.019565,64.528622&ll=40.019565,64.528622&z=16",
+      locationText:
+        "Bukhara , Vobkent region Charimgaron MFY Galaba street 199",
+      mapLink:
+        "https://maps.google.com/maps?q=40.019565,64.528622&ll=40.019565,64.528622&z=16",
     }),
     []
   );
 
+  const normalizeTelegramUsername = (value) => {
+    if (!value) return "";
+    return String(value)
+      .trim()
+      .replace(/^https?:\/\/t\.me\//i, "")
+      .replace(/^@/, "")
+      .replace(/\?.*$/, "")
+      .replace(/\/$/, "");
+  };
+
+  const tgUser = normalizeTelegramUsername(CONTACT.telegramUsername);
+  const tgProfileUrl = tgUser ? `https://t.me/${tgUser}` : "#";
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
-    service: "Rover kesish",
+    serviceKey: "contact_service_rover",
     message: "",
   });
 
@@ -37,25 +55,20 @@ export default function Contact() {
 
   const buildTelegramLink = () => {
     const text =
-      `Salom, ${CONTACT.brand}!\n\n` +
-      `Ism: ${form.name || "-"}\n` +
-      `Telefon: ${form.phone || "-"}\n` +
-      `Xizmat: ${form.service}\n\n` +
-      `Xabar:\n${form.message || "-"}`;
+      `${t("contact_tg_greeting", { brand: CONTACT.brand })}\n\n` +
+      `${t("contact_tg_name")}: ${form.name || "-"}\n` +
+      `${t("contact_tg_phone")}: ${form.phone || "-"}\n` +
+      `${t("contact_tg_service")}: ${t(form.serviceKey)}\n\n` +
+      `${t("contact_tg_message")}:\n${form.message || "-"}`;
 
-    return `https://t.me/${CONTACT.telegramUsername}?text=${encodeURIComponent(
-      text
-    )}`;
+    return tgUser ? `https://t.me/${tgUser}?text=${encodeURIComponent(text)}` : "#";
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Telegram username bo'lsa — Telegramga yo'naltiramiz
-    if (
-      CONTACT.telegramUsername &&
-      CONTACT.telegramUsername !== "your_username"
-    ) {
+    // Telegram bo'lsa — Telegramga yo'naltiramiz
+    if (tgUser) {
       window.open(buildTelegramLink(), "_blank", "noopener,noreferrer");
       return;
     }
@@ -63,35 +76,37 @@ export default function Contact() {
     // Aks holda — emailga mailto fallback
     const subject = encodeURIComponent(`${CONTACT.brand} | Contact`);
     const body = encodeURIComponent(
-      `Ism: ${form.name}\nTelefon: ${form.phone}\nXizmat: ${form.service}\n\nXabar:\n${form.message}`
+      `${t("contact_tg_name")}: ${form.name}\n` +
+        `${t("contact_tg_phone")}: ${form.phone}\n` +
+        `${t("contact_tg_service")}: ${t(form.serviceKey)}\n\n` +
+        `${t("contact_tg_message")}:\n${form.message}`
     );
     window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
   };
 
   return (
     <div className="contactLux">
-      <section className="contactWrap" aria-label="Contact AslDecor">
+      <section className="contactWrap" aria-label={t("contact_aria_page")}>
         <header className="contactHead">
-          <p className="cEyebrow">CONTACT / ASL DECOR </p>
+          <p className="cEyebrow">{t("contact_eyebrow")}</p>
+
           <h1 className="cTitle">
-            Let’s keep it clean. <span>One message.</span>
+            {t("contact_title")} <span>{t("contact_title_span")}</span>
           </h1>
-          <p className="cSub">
-            O‘lcham, material, rasm/namuna yuboring — biz tezda variant va narx
-            yo‘nalishini aytamiz.
-          </p>
+
+          <p className="cSub">{t("contact_sub")}</p>
         </header>
 
         <div className="contactGrid">
           {/* LEFT: Info */}
-          <aside className="contactInfo" aria-label="Contact details">
+          <aside className="contactInfo" aria-label={t("contact_aria_details")}>
             <div className="infoCard">
               <div className="infoRow">
                 <span className="infoIcon">
                   <FaPhoneAlt />
                 </span>
                 <div>
-                  <p className="infoLabel">Phone</p>
+                  <p className="infoLabel">{t("contact_label_phone")}</p>
                   <a
                     className="infoValue"
                     href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
@@ -108,7 +123,7 @@ export default function Contact() {
                   <FaEnvelope />
                 </span>
                 <div>
-                  <p className="infoLabel">Email</p>
+                  <p className="infoLabel">{t("contact_label_email")}</p>
                   <a className="infoValue" href={`mailto:${CONTACT.email}`}>
                     {CONTACT.email}
                   </a>
@@ -122,7 +137,7 @@ export default function Contact() {
                   <FaMapMarkerAlt />
                 </span>
                 <div>
-                  <p className="infoLabel">Location</p>
+                  <p className="infoLabel">{t("contact_label_location")}</p>
                   <a
                     className="infoValue"
                     href={CONTACT.mapLink}
@@ -136,102 +151,107 @@ export default function Contact() {
             </div>
 
             <div className="socialCard">
-              <p className="socialTitle">Social</p>
+              <p className="socialTitle">{t("contact_social_title")}</p>
+
               <div className="socialBtns">
                 <a
                   className="sBtn"
                   href={CONTACT.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Instagram"
-                  title="Instagram"
+                  aria-label={t("contact_aria_instagram")}
+                  title={t("contact_aria_instagram")}
                 >
                   <FaInstagram />
                 </a>
 
                 <a
                   className="sBtn"
-                  href={
-                    CONTACT.telegramUsername
-                      ? `https://t.me/AslDecor`
-                      : "#"
-                  }
+                  href={tgProfileUrl}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Telegram"
-                  title="Telegram"
+                  aria-label={t("contact_aria_telegram")}
+                  title={t("contact_aria_telegram")}
                 >
                   <FaTelegramPlane />
                 </a>
               </div>
 
-              <p className="socialHint">
-                Tezkor aloqa uchun Telegram ideal: skrin, o‘lcham, namuna —
-                hammasi bir joyda.
-              </p>
+              <p className="socialHint">{t("contact_social_hint")}</p>
             </div>
 
             <div className="noteCard">
-              <p className="noteTitle">Tip</p>
+              <p className="noteTitle">{t("contact_note_title")}</p>
               <p className="noteText">
-                Eng tez hisob-kitob: <b>o‘lcham</b> + <b>material</b> +{" "}
-                <b>rasm</b>. Qolganini biz “yes” qilib ketamiz 😄
+                {t("contact_note_prefix")}{" "}
+                <b>{t("contact_note_size")}</b> +{" "}
+                <b>{t("contact_note_material")}</b> +{" "}
+                <b>{t("contact_note_image")}</b>.{" "}
+                {t("contact_note_suffix")}
               </p>
             </div>
           </aside>
 
           {/* RIGHT: Form */}
-          <section className="contactForm" aria-label="Send a message">
+          <section className="contactForm" aria-label={t("contact_aria_form")}>
             <form className="formCard" onSubmit={handleSubmit}>
               <div className="formHead">
-                <p className="formEyebrow">REQUEST</p>
-                <h2 className="formTitle">Project details</h2>
+                <p className="formEyebrow">{t("contact_form_eyebrow")}</p>
+                <h2 className="formTitle">{t("contact_form_title")}</h2>
               </div>
 
               <div className="formGrid">
                 <label className="field">
-                  <span>Ism</span>
+                  <span>{t("contact_field_name")}</span>
                   <input
                     name="name"
                     value={form.name}
                     onChange={onChange}
-                    placeholder="Ismingiz"
+                    placeholder={t("contact_ph_name")}
                     autoComplete="name"
                   />
                 </label>
 
                 <label className="field">
-                  <span>Telefon</span>
+                  <span>{t("contact_field_phone")}</span>
                   <input
                     name="phone"
                     value={form.phone}
                     onChange={onChange}
-                    placeholder="+998 ..."
+                    placeholder={t("contact_ph_phone")}
                     autoComplete="tel"
                   />
                 </label>
 
                 <label className="field fieldFull">
-                  <span>Xizmat</span>
+                  <span>{t("contact_field_service")}</span>
                   <select
-                    name="service"
-                    value={form.service}
+                    name="serviceKey"
+                    value={form.serviceKey}
                     onChange={onChange}
                   >
-                    <option>Rover kesish</option>
-                    <option>Gravirovka</option>
-                    <option>Dizayn & maket</option>
-                    <option>Yakuniy ishlov</option>
+                    <option value="contact_service_rover">
+                      {t("contact_service_rover")}
+                    </option>
+                    <option value="contact_service_grav">
+                      {t("contact_service_grav")}
+                    </option>
+                    <option value="contact_service_design">
+                      {t("contact_service_design")}
+                    </option>
+                    <option value="contact_service_finish">
+                      {t("contact_service_finish")}
+                    </option>
                   </select>
                 </label>
 
                 <label className="field fieldFull">
-                  <span>Xabar</span>
+                  <span>{t("contact_field_message")}</span>
                   <textarea
                     name="message"
                     value={form.message}
                     onChange={onChange}
-                    placeholder="O‘lcham, material, nechta dona, muddat..."
+                    placeholder={t("contact_ph_message")}
                     rows={6}
                   />
                 </label>
@@ -239,31 +259,25 @@ export default function Contact() {
 
               <div className="formActions">
                 <button className="cBtn" type="submit">
-                  Send
+                  {t("contact_btn_send")}
                 </button>
 
                 <a
                   className="cBtn cBtnGhost"
-                  href={
-                    CONTACT.telegramUsername
-                      ? `https://t.me/AslDecor`
-                      : "#"
-                  }
+                  href={tgProfileUrl}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Telegram
+                  {t("contact_btn_telegram")}
                 </a>
               </div>
 
-              <p className="formFoot">
-                “Send” bosilsa: Telegram username to‘g‘ri bo‘lsa — Telegramga
-                message bilan ochadi, bo‘lmasa email.
-              </p>
+              <p className="formFoot">{t("contact_form_foot")}</p>
             </form>
           </section>
         </div>
-        <section className="contactMap" aria-label="Location map">
+
+        <section className="contactMap" aria-label={t("contact_aria_map")}>
           <div className="mapFrame">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6111.004459666683!2d64.528622!3d40.019565!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDAxJzEwLjQiTiA2NMKwMzEnNDMuMCJF!5e0!3m2!1sru!2s!4v1766497131206!5m2!1sru!2s"
@@ -273,7 +287,7 @@ export default function Contact() {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="AslDecor location"
+              title={t("contact_map_title")}
             />
           </div>
         </section>
