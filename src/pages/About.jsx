@@ -1,9 +1,14 @@
 import "../assets/styles/About.css";
 import { NavLink } from "react-router-dom";
 
-import sandiq from "../assets/images/5.png"
-import qorayon from "../assets/images/qora--yon.jpg"
-import oqyon from "../assets/images/oq-yon.jpg"
+import sandiq from "../assets/images/5.png";
+import qorayon from "../assets/images/qora--yon.jpg";
+import oqyon from "../assets/images/oq-yon.jpg";
+
+import patalok from "../assets/videos/patalok.mp4";
+import naqsh from "../assets/videos/naqsh.mp4";
+import rover from "../assets/videos/rover.mp4";
+import temir from "../assets/videos/temir.mp4";
 export default function About() {
   return (
     <div className="aboutLux">
@@ -34,7 +39,15 @@ export default function About() {
           </figure>
 
           <figure className="luxTile luxWide">
-            <img src="/about/process.jpg" alt="Process / workshop" loading="lazy" />
+            <video
+              className="luxMedia"
+              src={rover} // bu yerga qaysi videoni qo'ymoqchi bo'lsangiz, o'shani bering
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
             <figcaption className="luxCap">Process</figcaption>
           </figure>
         </section>
@@ -42,22 +55,54 @@ export default function About() {
         {/* Collage 2 (Elegant grid) */}
         <section className="luxGrid2" aria-label="More visuals">
           <figure className="luxTile luxTall">
-            <img src="/about/work-1.jpg" alt="Cut work 1" loading="lazy" />
+            <video
+              className="luxMedia"
+              src={patalok}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
             <figcaption className="luxCap">Clean edges</figcaption>
           </figure>
 
           <figure className="luxTile">
-            <img src="/about/work-2.jpg" alt="Cut work 2" loading="lazy" />
+            <video
+              className="luxMedia"
+              src={naqsh}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
             <figcaption className="luxCap">Geometry</figcaption>
           </figure>
 
           <figure className="luxTile">
-            <img src="/about/work-3.jpg" alt="Cut work 3" loading="lazy" />
+            <video
+              className="luxMedia"
+              src={rover}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
             <figcaption className="luxCap">Balance</figcaption>
           </figure>
 
           <figure className="luxTile">
-            <img src="/about/material.jpg" alt="Material" loading="lazy" />
+            <video
+              className="luxMedia"
+              src={temir}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
             <figcaption className="luxCap">Material</figcaption>
           </figure>
         </section>
@@ -73,18 +118,10 @@ export default function About() {
             </div>
 
             <div className="luxCtaRight">
-              <NavLink
-                to="/contact"
-                end
-                className="btnPrimary"
-              >
+              <NavLink to="/contact" end className="btnPrimary">
                 Contact
               </NavLink>
-              <NavLink
-                to="/products"
-                end
-                className="btnGhost"
-              >
+              <NavLink to="/products" end className="btnGhost">
                 Products
               </NavLink>
             </div>
